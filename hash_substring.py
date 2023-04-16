@@ -3,7 +3,19 @@
 def read_input():
     # this function needs to aquire input both from keyboard and file
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
+     text = input()
+    if "F" in text:
+        fileName = input()
+        file = open(fileName, "r")
+        print(file)
     
+    elif "I" in text:
+        pattern = input()
+        rinda = input()
+        print(ms)
+    else:
+        print("kļūda")
+        return
     
     # after input type choice
     # read two lines 
@@ -13,7 +25,7 @@ def read_input():
     # return both lines in one return
     
     # this is the sample return, notice the rstrip function
-    return (input().rstrip(), input().rstrip())
+    return (text().rstrip(), pattern().rstrip())
 
 def print_occurrences(output):
     # this function should control output, it doesn't need any return
