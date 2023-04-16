@@ -5,7 +5,7 @@ def read_input():
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
     rinda = input()
     if "F" in rinda:
-        fileName = input()
+        fileName = "06"
         file = "./tests/"+fileName
         with open(file, "r") as f:
             pattern = f.readline()
