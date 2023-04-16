@@ -17,6 +17,8 @@ def read_input():
     else:
         print("kļūda")
         return
+    for line in sys.stdin:
+        text+=line
     
     # after input type choice
     # read two lines 
