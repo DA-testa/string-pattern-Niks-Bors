@@ -38,7 +38,7 @@ def print_occurrences(output):
 def get_occurrences(pattern, text):
     q=101
     d=256
-    res = []
+   
     
     p = 0 # pattern hash
     t = 0 #txt hash value
