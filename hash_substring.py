@@ -82,6 +82,6 @@ def get_occurrences(pattern, text):
 if __name__ == '__main__':
     input_data=read_input()
     if input_data:
-        print_occurrences(get_occurrences(*read_input()))
+        print_occurrences(get_occurrences(*input_data))
    
 
