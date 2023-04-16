@@ -28,9 +28,9 @@ def read_input():
     # this is the sample return, notice the rstrip function
     return (text.rstrip(), pattern.rstrip())
 
-def print_occurrences(res):
+def print_occurrences(output):
     # this function should control output, it doesn't need any return
-    print(' '.join(map(str, res)))
+    print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
     q=101
@@ -73,7 +73,5 @@ def get_occurrences(pattern, text):
 
 # this part launches the functions
 if __name__ == '__main__':
-   res = get_occurrences(*read_input())
-   
-   print_occurences(res)
+    print_occurrences(get_occurrences(*read_input()))
 
