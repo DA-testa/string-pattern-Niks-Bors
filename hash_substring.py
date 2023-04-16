@@ -57,7 +57,7 @@ def get_occurrences(pattern, text):
                     if text[i+j] != pattern[j]:
                         break
                     else:
-                    r   es.append(i)
+                        res.append(i)
         if i<A-Z:
             t=(q*(t-ord(text[i])*h)+ord(text[i+Z]))% q
             if t<0:
