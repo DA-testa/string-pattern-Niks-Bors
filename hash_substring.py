@@ -42,6 +42,8 @@ def get_occurrences(pattern, text):
     A = len(text)
     Z = len(pattern)
     h = 1
+    if len(text)<len(pattern):
+        return [] 
     for i in range(Z-1):
         h = (h*d) % q
     for i in range(Z):
