@@ -7,9 +7,9 @@ def read_input():
     if "F" in text:
         fileName = input()
         file = "./tests/"+fileName
-        with open(file, "r") as fails:
-            pattern = fails.readline()
-            text = fails.readline()
+        with open(file, "r") as f:
+            pattern = f.readline()
+            text = f.readline()
     elif "I" in text:
         pattern = input()
         text = input()
@@ -36,8 +36,7 @@ def get_occurrences(pattern, text):
     q=101
     d=256
     res = []
-    i = 0
-    j=0
+    
     p = 0 # pattern hash
     t = 0 #txt hash value
     A = len(text)
@@ -47,15 +46,19 @@ def get_occurrences(pattern, text):
         h = (h*d) % q
     for in range(Z):
         p = (d*p+ord(pattern[i])) % q
-        t = (d*p+ord(pattern[i])) % q
+        t = (d*p+ord(text[i])) % q
     for i in range (A-Z+1):
         if p==t:
-            for j in range(Z)
-            if A[i+j]!=Z[j]:
+            for j in range(Z):
+            if text[i+j]!=pattern[j]:
+                break:
+            else:
                res.append(i)
         if A-Z > i:
             t=(d*(t-ord(text[i])*h)+ord(text[i+Z]))% q
-            return res
+            if t<0:
+                t=t+q
+        return res
 
 
 
