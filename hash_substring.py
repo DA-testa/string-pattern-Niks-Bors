@@ -53,7 +53,7 @@ def get_occurrences(pattern, text):
         if p==t:
             for j in range(Z):
                 if text[i+j] != pattern[j]:
-                    break
+                    break:
                 else:
                     res.append(i)
         if A-Z > i:
