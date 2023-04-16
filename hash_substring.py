@@ -10,8 +10,8 @@ def read_input():
 
 
         with open(file,"r") as f:
-            pattern = f.readline().rstrip()
-            text = f.readline().rstrip()
+            pattern = f.readline()
+            text = f.readline()
     elif "I" in rinda:
         pattern = input()
         text = input()
@@ -29,7 +29,7 @@ def read_input():
     # return both lines in one return
     
     # this is the sample return, notice the rstrip function
-    return (text, pattern)
+    return (text.rstrip(), pattern.rstrip())
 
 def print_occurrences(output):
     # this function should control output, it doesn't need any return
