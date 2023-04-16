@@ -4,21 +4,17 @@ def read_input():
     # this function needs to aquire input both from keyboard and file
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
     rinda = input()
-    
-    
-    if rinda == "F":
-        fileName="06"
-        file_name = "./tests/" + fileName
-        with open(file_name, 'r') as f:
-            pattern = f.readline().strip()
-            text = f.readline().strip()
-            return (text, pattern)
+    if "F" in rinda:
+        fileName = "06"
+        file = "./tests/"+fileName
 
-    elif rinda == "I":
-        pattern = input().strip()
-        text = input().strip()
-        return (text, pattern)
-    
+
+        with open(file,"r") as f:
+            pattern = f.readline().rstrip()
+            text = f.readline().rstrip()
+    elif "I" in rinda:
+        pattern = input()
+        text = input()
         
     else:
         print("kļūda")
@@ -33,7 +29,7 @@ def read_input():
     # return both lines in one return
     
     # this is the sample return, notice the rstrip function
-    
+    return (text, pattern)
 
 def print_occurrences(output):
     # this function should control output, it doesn't need any return
