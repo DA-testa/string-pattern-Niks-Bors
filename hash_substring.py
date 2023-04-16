@@ -45,28 +45,29 @@ def get_occurrences(pattern, text):
     A = len(text)
     Z = len(pattern)
     h = 1
-    if A<Z: #pārbauda vai teksts ir lielāks nekā pattern
+    if A<Z: #pārbauda vai teksts ir lielāks nekā pattern, ja ir, tad return
         return [] 
+    
     for i in range(Z-1):
-        h = (h*d) % q
+      h = (h*d) % q
+
     for i in range(Z):
-        p = (d * p + ord(pattern[i])) % q
-        t = (d*t + ord(text[i])) % q
-    for i in range (A-Z+1):
-        j=0
-        if p==t:
-            while j <Z and text[i+j] == pattern[j]:
-                j+=1
-          
-            if j == Z:
-                res.append(i+1)
-        if i<A-Z:
-            t=(q*(t-ord(text[i])*h)+ord(text[i+Z]))% q
+      p = (q* p + ord(pattern[i])) % d
+      t = (q*t + ord(text[i])) % d
+
+    res = [] 
+    i = 0
+    while i <= A - Z:
+      if hash(pattern) == hash(text[i : i + Z]):
+          res.append(i)
+      i += 1
 
 
-            
-            if t<0:
-                t=t+q
+      if i<A-Z:
+        t=(q*(t-ord(text[i])*h)+ord(text[i+Z]))% d
+
+        if t<0:
+           t = t+d
     return res
 
 
@@ -75,11 +76,11 @@ def get_occurrences(pattern, text):
     # this function should find the occurances using Rabin Karp alghoritm 
 
     # and return an iterable variable
-    
+
 
 
 # this part launches the functions
-if __name__ == '__main__':
-    print_occurrences(get_occurrences(*read_input()))
+if name == 'main':
+    print_occurrences(get_occurrences(read_input()))
    
 
