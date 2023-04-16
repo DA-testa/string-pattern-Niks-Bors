@@ -36,7 +36,7 @@ def print_occurrences(output):
     print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
-    q=101
+    q=60
     d=256
     res = []
     
