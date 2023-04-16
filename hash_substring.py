@@ -36,33 +36,43 @@ def print_occurrences(output):
     print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
-    q=60
-    d=256
-    res = []
+    # this function should find the occurances using Rabin Karp alghoritm 
     
-    p = 0 # pattern hash
-    t = 0 #txt hash value
-    A = len(text)
-    Z = len(pattern)
-    h = 1
-    if A<Z:
-        return [] 
-    for i in range(Z-1):
-        h = (h*d) % q
-    for i in range(Z):
-        p = (d * p + ord(pattern[i])) % q
-        t = (d*t + ord(text[i])) % q
-    for i in range (A-Z+1):
-        j=0
-        if p==t:
-            while j <Z and text[i+j] == pattern[j]:
-                j+=1
-          
-            if j == Z:
-                res.append(i+1)
-        if i<A-Z:
-            t=(q*(t-ord(text[i])*h)+ord(text[i+Z]))% q
+    p = 31
+    m = 10**9 + 9
+    
+    n = len(text)
+    k = len(pattern)
+    
+    power_of_p = [1]
+    for i in range(1, k):
+        power_of_p.append((power_of_p[-1] * p) % m)
+        
+    pattern_hash = 0
+    for i in range(k):
+        pattern_hash = (pattern_hash + (ord(pattern[i]) - ord('a') + 1) * power_of_p[k-i-1]) % m
+        
+    text_hash = [0] * (n - k + 1)
+    text_hash[0] = 0
+    for i in range(k):
+        text_hash[0] = (text_hash[0] + (ord(text[i]) - ord('a') + 1) * power_of_p[k-i-1]) % m
+        
+    for i in range(1, n - k + 1):
+        text_hash[i] = (text_hash[i-1] - (ord(text[i-1]) - ord('a') + 1) * power_of_p[k-1] + m) % m
+        text_hash[i] = (text_hash[i] * p + (ord(text[i+k-1]) - ord('a') + 1)) % m
+    
+    occurrences = []
+    for i in range(n - k + 1):
+        if pattern_hash == text_hash[i]:
+            if text[i:i+k] == pattern:
+                occurrences.append(i)
+    
+    return occurrences
 
+
+# this part launches the functions
+if __name__ == '__main__':
+    print_occurrences(get_occurrences(*read_input()))
 
             
             if t<0:
