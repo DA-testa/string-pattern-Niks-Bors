@@ -17,8 +17,7 @@ def read_input():
     else:
         print("kļūda")
         return
-    for line in sys.stdin:
-        text+=line
+   
     
     # after input type choice
     # read two lines 
@@ -54,8 +53,10 @@ def get_occurrences(pattern, text):
     for i in range (A-Z+1):
         if p==t:
             for j in range(Z):
-                if text[i+j] == pattern[j]:
-                    res.append(i)
+                if text[i+j] != pattern[j]:
+                    break
+            else:
+                res.append(i)
         if A-Z > i:
             t=(d*(t-ord(text[i])*h)+ord(text[i+Z]))% q
             if t<0:
