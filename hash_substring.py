@@ -7,7 +7,7 @@ def read_input():
     if "F" in rinda:
         fileName = "06"
         file = "./tests/"+fileName
-        with open(file, "r") as f:
+        with open(file, mode = "r") as f:
             pattern = f.readline()
             text = f.readline()
     elif "I" in rinda:
