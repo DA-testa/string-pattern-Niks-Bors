@@ -18,7 +18,7 @@ def read_input():
         
     else:
         print("kļūda")
-        return
+        
    
     
     # after input type choice
