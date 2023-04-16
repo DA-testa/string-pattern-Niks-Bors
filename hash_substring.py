@@ -49,7 +49,7 @@ def get_occurrences(pattern, text):
         h = (h*d) % q
     for i in range(Z):
         p = (d * p + ord(pattern[i])) % q
-        t = (d*p + ord(text[i])) % q
+        t = (d*t + ord(text[i])) % q
     for i in range (A-Z+1):
         if p==t:
             for j in range(Z):
