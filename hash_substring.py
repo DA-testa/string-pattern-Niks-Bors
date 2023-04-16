@@ -3,13 +3,17 @@
 def read_input():
     # this function needs to aquire input both from keyboard and file
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
-    rinda = input()
-    if "F" in rinda:
-        fileName = "06"
-        file = "./tests/"+fileName
-        with open(file,"r") as f:
+     input_type = input().strip()
+    pattern, text = None, None
+    
+    if input_type == "F":
+        file_name = input().strip()
+        with open(file_name, 'r') as f:
             pattern = f.readline().strip()
             text = f.readline().strip()
+    elif input_type == "I":
+        pattern = input().strip()
+        text = input().strip()
     elif "I" in rinda:
         pattern = input()
         text = input()
