@@ -26,7 +26,7 @@ def read_input():
     # return both lines in one return
     
     # this is the sample return, notice the rstrip function
-    return (text().rstrip(), pattern().rstrip())
+    return (text.rstrip(), pattern.rstrip())
 
 def print_occurrences(output):
     # this function should control output, it doesn't need any return
@@ -44,8 +44,8 @@ def get_occurrences(pattern, text):
     h = 1
     for i in range(Z-1):
         h = (h*d) % q
-    for in range(Z):
-        p = (d*p+ord(pattern[i])) % q
+    for i in range(Z):
+        p = (d * p + ord(pattern[i])) % q
         t = (d*p+ord(text[i])) % q
     for i in range (A-Z+1):
         if p==t:
@@ -58,7 +58,7 @@ def get_occurrences(pattern, text):
             t=(d*(t-ord(text[i])*h)+ord(text[i+Z]))% q
             if t<0:
                 t=t+q
-        return res
+    return res
 
 
 
