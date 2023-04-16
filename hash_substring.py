@@ -51,22 +51,22 @@ def get_occurrences(pattern, text):
     for i in range(Z-1):
       h = (h*d) % q
 
-    for i in range(Z):
+    for i in range(Z): #aprēķināt hash vērtību pattern pirmajā teksta logā
       p = (q* p + ord(pattern[i])) % d
       t = (q*t + ord(text[i])) % d
 
     res = [] 
     i = 0
-    while i <= A - Z:
+    while i <= A - Z: # pārbauda ciklā vai pattern un slīdošais logs, kurā atrodas teksts, ir vienāds hash vērtība, un tad pārbauda vai tie tiešām ir vienādi un pievieno resultātam
       if hash(pattern) == hash(text[i : i + Z]):
           res.append(i)
-      i += 1
+      i += 1 # nākamais teksta logs
 
 
-      if i<A-Z:
+      if i<A-Z: # pārbauda nākamos logus, un aprēķina
         t=(q*(t-ord(text[i])*h)+ord(text[i+Z]))% d
 
-        if t<0:
+        if t<0: # pārliecinās, ka hash ir pozitīvs, ja nē, tad izmanto modulisku aprēķināšanu
            t = t+d
     return res
 
