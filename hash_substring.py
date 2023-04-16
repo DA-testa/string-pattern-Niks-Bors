@@ -14,9 +14,7 @@ def read_input():
     elif input_type == "I":
         pattern = input().strip()
         text = input().strip()
-    elif "I" in rinda:
-        pattern = input()
-        text = input()
+    
         
     else:
         print("kļūda")
