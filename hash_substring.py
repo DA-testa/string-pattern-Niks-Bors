@@ -48,15 +48,15 @@ def get_occurrences(pattern, text):
     for i in range(Z-1):
         h = (h*d) % q
     for i in range(Z):
-        p = (d * p + ord(pattern[i])) % q
-        t = (d*t + ord(text[i])) % q
+        p = (d * q + ord(pattern[i])) % d
+        t = (d*q + ord(text[i])) % d
     for i in range (A-Z+1):
         if p==t:
             if text[i:i+Z] == pattern:
                
                 res.append(i)
         if i<A-Z:
-            t=(d*(t-ord(text[i])*h)+ord(text[i+Z]))% q
+            t=(q*(t-ord(text[i])*h)+ord(text[i+Z]))% d
             if t<0:
                 t=t+q
     return res
